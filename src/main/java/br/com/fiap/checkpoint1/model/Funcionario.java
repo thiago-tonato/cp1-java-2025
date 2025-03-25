@@ -1,32 +1,29 @@
 package br.com.fiap.checkpoint1.model;
 
-import br.com.fiap.checkpoint1.annotations.Coluna;
-import br.com.fiap.checkpoint1.annotations.Tabela;
-import org.hibernate.annotations.Entity;
-
 import javax.persistence.*;
 
-@Tabela(nome = "TAB_FUNCIONARIO")
 @Entity
+@Table(name = "TAB_FUNCIONARIO")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo_funcionario", discriminatorType = DiscriminatorType.STRING)
 public class Funcionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Coluna(nome = "id")
+    @Column(name = "id")
     private Long id;
 
-    @Coluna(nome = "nome")
+    @Column(name = "nome")
     private String nome;
 
-    @Coluna(nome = "horas_trabalhadas")
+    @Column(name = "horas_trabalhadas")
     private int horasTrabalhadas;
 
-    @Coluna(nome = "valor_por_hora")
+    @Column(name = "valor_por_hora")
     private double valorPorHora;
 
-    public Funcionario() {}
+    public Funcionario() {
+    }
 
     public Funcionario(String nome, int horasTrabalhadas, double valorPorHora) {
         this.nome = nome;
@@ -80,4 +77,3 @@ public class Funcionario {
         this.valorPorHora = valorPorHora;
     }
 }
-
