@@ -1,11 +1,7 @@
 package br.com.fiap.checkpoint1.model;
 
-import br.com.fiap.checkpoint1.annotations.Tabela;
-import br.com.fiap.checkpoint1.annotations.Coluna;
-import org.hibernate.annotations.Entity;
-import javax.persistence.DiscriminatorValue;
+import javax.persistence.*;
 
-@Tabela(nome = "TAB_FUNCIONARIO")
 @Entity
 @DiscriminatorValue("Estagiario")
 public class Estagiario extends Funcionario {
