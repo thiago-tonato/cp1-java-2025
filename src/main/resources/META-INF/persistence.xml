@@ -1,6 +1,11 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
     <persistence-unit name="CLIENTE_ORACLE" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>br.com.fiap.checkpoint1.model.Funcionario</class>
+        <class>br.com.fiap.checkpoint1.model.FuncSenior</class>
+        <class>br.com.fiap.checkpoint1.model.FuncGerente</class>
+        <class>br.com.fiap.checkpoint1.model.FuncJunior</class>
+        <class>br.com.fiap.checkpoint1.model.Estagiario</class>
         <properties>
             <!--  Exibe as queries executadas no banco de dados  -->
             <property name="hibernate.show_sql" value="true"/>
@@ -19,7 +24,7 @@
             <!--  Usuário do banco, rmxxxxxx  -->
             <property name="javax.persistence.jdbc.user" value="RMxxxx"/>
             <!--  Senha do banco, data de nascimento com 6 digitos  -->
-            <property name="javax.persistence.jdbc.password" value="senha"/>
+            <property name="javax.persistence.jdbc.password" value="xxxx"/>
             <!--  URL do banco  -->
             <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl"/>
         </properties>
