@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 
 public class FuncionarioDAO {
 
-    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("FuncionarioPU");
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("CLIENTE_ORACLE");
 
     public static void salvar(Funcionario funcionario) {
         EntityManager em = emf.createEntityManager();
@@ -24,5 +24,23 @@ public class FuncionarioDAO {
         em.close();
         return funcionario;
     }
-}
 
+    public static void atualizar(Funcionario funcionario) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.merge(funcionario);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public static void deletar(Long id) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Funcionario funcionario = em.find(Funcionario.class, id);
+        if (funcionario != null) {
+            em.remove(funcionario);
+        }
+        em.getTransaction().commit();
+        em.close();
+    }
+}
