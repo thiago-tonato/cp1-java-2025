@@ -2,8 +2,7 @@ package br.com.fiap.checkpoint1.model;
 
 import br.com.fiap.checkpoint1.annotations.Coluna;
 import br.com.fiap.checkpoint1.annotations.Tabela;
-import org.hibernate.annotations.Entity;
-
+import javax.persistence.Entity;
 import javax.persistence.DiscriminatorValue;
 
 @Tabela(nome = "TAB_FUNCIONARIO")
