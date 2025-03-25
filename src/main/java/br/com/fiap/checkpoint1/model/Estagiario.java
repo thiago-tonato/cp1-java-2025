@@ -2,8 +2,12 @@ package br.com.fiap.checkpoint1.model;
 
 import br.com.fiap.checkpoint1.annotations.Tabela;
 import br.com.fiap.checkpoint1.annotations.Coluna;
+import org.hibernate.annotations.Entity;
+import javax.persistence.DiscriminatorValue;
 
-@Tabela(nome = "TAB_ESTAGIARIO")
+@Tabela(nome = "TAB_FUNCIONARIO")
+@Entity
+@DiscriminatorValue("Estagiario")
 public class Estagiario extends Funcionario {
 
     public Estagiario(String nome, int horasTrabalhadas, double valorPorHora) {
@@ -26,4 +30,3 @@ public class Estagiario extends Funcionario {
                 '}';
     }
 }
-
