@@ -3,39 +3,22 @@ package br.com.fiap.checkpoint1;
 import br.com.fiap.checkpoint1.model.FuncGerente;
 import br.com.fiap.checkpoint1.model.FuncSenior;
 import br.com.fiap.checkpoint1.model.Funcionario;
-import br.com.fiap.checkpoint1.utils.SQLGenerator;
 import br.com.fiap.checkpoint1.EntityManager.FuncionarioDAO;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import br.com.fiap.checkpoint1.utils.SQLGenerator;
 
 public class Main {
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("oraclePU");
-        EntityManager em = emf.createEntityManager();
+        SQLGenerator.gerarSelectSQL(Funcionario.class);
+        SQLGenerator.gerarInsertSQL(Funcionario.class);
+        SQLGenerator.gerarDeleteSQL(Funcionario.class);
 
-        FuncionarioDAO funcionarioDAO = new FuncionarioDAO(em);
+        FuncionarioDAO.salvar(new Funcionario("Carlos", 40, 50.0));
+        FuncionarioDAO.salvar(new FuncSenior("Mariana", 45, 60.0));
+        FuncionarioDAO.salvar(new FuncGerente("Roberto", 50, 80.0));
 
-        Funcionario func1 = new Funcionario(1, "Carlos", 40, 50.0);
-        FuncSenior func2 = new FuncSenior(2, "Mariana", 45, 60.0);
-        FuncGerente func3 = new FuncGerente(3, "Roberto", 50, 80.0);
-
-        System.out.println(func1);
-        System.out.println(func2);
-        System.out.println(func3);
-
-        SQLGenerator.gerarSQL(Funcionario.class);
-        SQLGenerator.gerarSQL(FuncSenior.class);
-        SQLGenerator.gerarSQL(FuncGerente.class);
-
-        funcionarioDAO.salvar(func1);
-        funcionarioDAO.salvar(func2);
-        funcionarioDAO.salvar(func3);
-
-        funcionarioDAO.listarTodos().forEach(System.out::println);
-
-        em.close();
-        emf.close();
+        Funcionario funcionario = FuncionarioDAO.buscar(1L);
+        if (funcionario != null) {
+            funcionario.imprimirInformacao();
+        }
     }
 }
