@@ -8,7 +8,8 @@ import br.com.fiap.checkpoint1.EntityManager.FuncionarioDAO;
 import br.com.fiap.checkpoint1.utils.SQLGenerator;
 
 /**
- * Classe principal que demonstra o uso das operações CRUD (Create, Read, Update, Delete)
+ * Classe principal que demonstra o uso das operações CRUD (Create, Read,
+ * Update, Delete)
  * utilizando o FuncionarioDAO para interação com o banco de dados
  */
 public class Main {
@@ -19,7 +20,7 @@ public class Main {
         SQLGenerator.gerarDeleteSQL(Funcionario.class);
 
         System.out.println("\n=== Operações no Banco de Dados ===");
-        
+
         // Operações de Inserção (Create)
         System.out.println("\n--- INSERT ---");
         // Cria diferentes tipos de funcionários no banco de dados
@@ -41,8 +42,8 @@ public class Main {
         if (funcionario != null) {
             // Atualiza os dados do funcionário
             funcionario.setNome("Carlos Silva");
-            funcionario.setIdade(41);
-            funcionario.setSalario(55.0);
+            funcionario.setHorasTrabalhadas(41);
+            funcionario.setValorPorHora(55.0);
             // Persiste as alterações no banco de dados
             FuncionarioDAO.atualizar(funcionario);
             System.out.println("Funcionário atualizado:");
